@@ -1,19 +1,23 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>FS-App-Template</h1>
+const Navbar = () => {
+
+  const x = "1"
+  return (
+  <div className="bg-teal-300 flex flex-row h-14 rounded-md justify-between items-center">
+    <div>
+      <h1 className="w-64 text-3xl">Ideas</h1>
+    </div>
+    <div>
+    </div>
     <nav>
-      {isLoggedIn ? (
-        <div>
+      {x ? (
+        <div className="w-64 flex justify-evenly justify-items-end">
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
+          <button className="border-2 p-2 rounded-md hover:bg-teal-400 active:bg-teal-500">Home</button>
+          <button className="border-2 p-2 rounded-md hover:bg-teal-400 active:bg-teal-500">Logout</button>
         </div>
       ) : (
         <div>
@@ -23,25 +27,8 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         </div>
       )}
     </nav>
-    <hr />
   </div>
-)
-
-/**
- * CONTAINER
- */
-const mapState = state => {
-  return {
-    isLoggedIn: !!state.auth.id
-  }
+  )
 }
 
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
-  }
-}
-
-export default connect(mapState, mapDispatch)(Navbar)
+export default Navbar
